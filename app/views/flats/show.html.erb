@@ -1,0 +1,47 @@
+<div class="flat-container margin-nav">
+  <div class="flat-container-left">
+    <div class="show-title flat">
+      <h3><%= @flat.address %></h3>
+      <%= link_to flats_path do %>
+        <button class="btn btn-principal btn-margin-top">Tous les apparts</button>
+      <% end %>
+    </div>
+
+    <div class="flat-content">
+      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <% @flat.images.each_with_index do |image, index| %>
+            <div class="carousel-item <%= "active" if index == 0%>">
+              <%= image_tag image, height: 500, width: 830 %>
+            </div>
+          <% end %>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="flat-description">
+      <div class="flat-info">
+        <p><i class="fas fa-bed"></i> <%= pluralize(@flat.room, 'chambre')%></p>
+        <p><i class="fas fa-ruler-combined"></i> <%= @flat.surface %> m²</p>
+        <p><i class="fas fa-euro-sign"></i><span id="flat-price-per-night"><%= @flat.price %></span> € / nuit</p>
+        <p><i class="fas fa-users"></i> <%= @flat.max_guests %></p>
+      </div>
+      <p><%= @flat.description %></p>
+    </div>
+  </div>
+  <div class="flat-calendar">
+    <%= render 'bookings/form', booking: @booking, flat: @flat, text: "Réserver" %>
+  </div>
+  <div
+    id="booking-form-div"
+    data-bookings="<%= @bookings_dates.to_json %>"
+  >
+</div>

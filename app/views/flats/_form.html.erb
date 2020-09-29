@@ -1,0 +1,20 @@
+<div class="container margin-nav">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-8">
+      <h1><%= text %></h1>
+      <%= simple_form_for flat do |f| %>
+        <%= f.input :address %>
+        <%= f.input :description %>
+        <div class="style-form-align">
+          <%= f.input :surface, label: "Surface in m²" %>
+          <%= f.input :room, collection: 0..10 %>
+          <%= f.input :max_guests, collection: 0..20 %>
+          <%= f.input :price, label: "Price in €" %>
+        </div>
+        <%= f.file_field :images, as: :file, multiple: true, class: "form-control" %>
+        <%= f.submit "Valider", class: 'btn btn-principal' %>
+      <% end %>
+      <%= link_to "Revenir à mes apparts", my_flat_path %>
+    </div>
+  </div>
+</div>

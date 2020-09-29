@@ -1,0 +1,55 @@
+<div class="main-container">
+
+  <div class="cards-container">
+    <div class="search">
+      <%= simple_form_for :flats_filter, url: flats_path, method: :get do |f| %>
+        <%= f.input :search, label: false,
+                             input_html: { placeholder: "Champ de recherche" } %>
+        <div class="row">
+          <div class="col-12 col-md-6 col-lg-3">
+            <%= f.input :min_price, label: false,
+                                    input_html: { type: :number,
+                                                  min: "0",
+                                                  placeholder: "Prix mini" } %>
+          </div>
+          <div class="col-12 col-md-6 col-lg-3">
+            <%= f.input :max_price, label: false,
+                                    input_html: { type: :number,
+                                                  placeholder: "Prix max" } %>
+          </div>
+          <div class="col-12 col-md-6 col-lg-3">
+            <%= f.input :start_date, label: false,
+                                     input_html: { type: :date } %>
+
+          </div>
+          <div class="col-12 col-md-6 col-lg-3">
+            <%= f.input :end_date, label: false,
+                                   input_html: { type: :date } %>
+          </div>
+        </div>
+        <%= f.submit "Chercher", class: "btn btn-principal mt-0" %>
+      <% end %>
+    </div>
+
+    <div class="cards-grid-2">
+      <% @flats.each do |flat| %>
+        <%= link_to flat_path(flat.id) do %>
+          <div class="card-flat">
+            <div class="card-flat-image">
+              <%= image_tag flat.images.first, height: 300, width: 400 %>
+              <h4 class="card-flat-price"><%= flat.price %> €</h4>
+            </div>
+            <h5 class="card-flat-address"><%= flat.address %></h5>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div
+    id="map"
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+  ></div>
+</div>
+
