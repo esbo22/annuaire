@@ -1,10 +1,10 @@
 <div class="pages-container margin-nav">
-  <h3>Mes appartements</h3>
+  <h3>Mon entreprise</h3>
   <div class="cards-grid-3">
     <% if @flats.empty? %>
-      <p>Pas encore d'appartements</p>
+      <p>Pas encore d'entreprise</p>
       <%= link_to new_flat_path do %>
-        <button class="btn btn-principal">Publier une annonce</button>
+        <button class="btn btn-principal">Publier votre annonce</button>
       <% end %>
 
     <% else %>

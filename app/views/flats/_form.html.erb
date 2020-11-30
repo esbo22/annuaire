@@ -6,15 +6,15 @@
         <%= f.input :address %>
         <%= f.input :description %>
         <div class="style-form-align">
-          <%= f.input :surface, label: "Surface in m²" %>
-          <%= f.input :room, collection: 0..10 %>
-          <%= f.input :max_guests, collection: 0..20 %>
-          <%= f.input :price, label: "Price in €" %>
+          <%= f.input :surface, label: "Surface en m²" %>
+          <%= f.input :room, collection: 0..10, label: "test" %>
+          <%= f.input :max_guests, collection: 0..20, label: "test" %>
+          <%= f.input :price, label: "Prix en €" %>
         </div>
         <%= f.file_field :images, as: :file, multiple: true, class: "form-control" %>
         <%= f.submit "Valider", class: 'btn btn-principal' %>
       <% end %>
-      <%= link_to "Revenir à mes apparts", my_flat_path %>
+      <%= link_to "Revenir à mon entreprises", my_flat_path %>
     </div>
   </div>
 </div>

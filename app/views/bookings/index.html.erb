@@ -4,7 +4,7 @@
     <% if @bookings.empty? %>
       <p>Pas de réservations</p>
       <%= link_to flats_path do %>
-        <button class="btn btn-principal">Chercher un appart</button>
+        <button class="btn btn-principal">Chercher une entreprise</button>
       <% end %>
     <% else %>
       <% @bookings.each do |booking| %>
@@ -25,7 +25,7 @@
                 <% end %>
                 <%= link_to booking_path(booking),
                   method: :delete,
-                  data: { confirm: "Are you sure?" } do %>
+                  data: { confirm: "Etes-vous sûr ?" } do %>
                   <button class="btn btn-principal btn-margin-top">Annuler</button>
                 <% end %>
               </div>
